@@ -20,7 +20,6 @@ public:
       health = health - damage;
       cout << "After Taking Damage of " << damage << " Points. "
            << "Player health is " << health << endl;
-      IsAlive();
     } else {
       cout << "Player's Dead" << endl;
     }
@@ -43,7 +42,7 @@ int main() {
   player.Takedamage(20);
 
   cout << "Current Health: " << player.GetHealth() << endl;
-  
+
   player.Takedamage(60);
   player.Takedamage(20);
   player.Takedamage(10);
