@@ -1,41 +1,40 @@
 #include <iostream>
 
-class Shape{
+class Base{
   public:
-  virtual void calculateArea()=0;
+   virtual void run()  
+  {
+    std::cout<<"Base Class run\n";
+  }
+  virtual void add(){}
 };
 
-class Rectangle: public Shape
-{
-  int l=10;
-  int b=20;
+class Derived: public Base{
   public:
-  void calculateArea(){
-    int area = l*b;
-    std::cout<<"Rectangle Area = "<<area<<"\n";
+  void run()
+  {
+    std::cout<<"Derived Class run\n";
+  }
+
+  void add(){
+    std::cout<<"Derived Class add\n";
   }
 };
 
-class Square:public Shape
-{
-  int l=15;
-  public:
-  void calculateArea(){
-    int area = l*l;
-    std::cout<<"Square Area = "<<area<<"\n";
-  }
-};
-int main() 
-{
-  std::cout << "Pure Abstract Class means Interface, Here Shape is Interface\n";
+int main() {
+  std::cout << "Virtual functions\n";
 
-  Shape *shape;
-  //Shape shape; error because base class contians pure virtual function and that cannot be instantiated. as it became abstract class a pure abstract class know as Interface.
-  Rectangle rectangle;
-  shape = &rectangle;
-  shape->calculateArea();
+  Base *basePointer;
+  Base base;
+  base.run();
+  basePointer = &base;
+  basePointer->run();
+  basePointer->add();
+  base.add();
 
-  Square square;
-  shape = &square;  
-  shape->calculateArea();
+  Derived derived;
+  basePointer = &derived;
+  basePointer->run();
+  derived.run();
+  basePointer->add();
 } 
